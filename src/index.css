@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #0B2434;
+}
+
+.main {
+  height: 380px;
+  width: 75%;
+  max-width: 600px;
+  min-width: 320px;
+  background-color: #F5F5F5;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 33px;
+}
+
+.title {
+  color: #2B283A;
+  font-weight: 700;
+  font-size: 1.7rem;
+}
+
+.subtitle {
+  text-align: center;
+  width: 240px;
+  color: #4A4E74;
+  font-weight: 400;
+  font-size: .8rem;
+  margin-top: 7px;
+}
+
+/* dice section */
+
+.count {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  position: relative;
+  left: -109px
+}
+
+.dice {
+  display: grid;
+  grid-template: 
+    ". . . . ."
+    ". . . . .";
+  
+  gap: 18px;
+
+}
+
+.die {
+  height: 40px;
+  width: 40px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 2px 2px 0px #00000050;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.die-num {
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 1.30rem;
+}
+
+.die.held {
+  background-color: #59E391;
+}
+
+.die-face {
+  width: 95%;
+  
+}
+
+/* button  */
+
+.button {
+  height: 38px;
+  width: 110px;
+  border: none;
+  border-radius: 4px;
+  background-color: #5035FF;
+  color: #fff;
+  font-family: "Karla", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: center;
+  margin-top: 31px;
+  cursor: pointer;
+}
+
+.button:focus{
+  outline: none;
+}
+
+.button:active {
+  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+/* best time */
+.bestTime {
+  position: absolute;
+  /* transform: translateX(-50%); */
+  left: 10px;
+  top: 10px;
+}
