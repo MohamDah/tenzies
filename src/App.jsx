@@ -105,7 +105,7 @@ function App() {
     <>
     {tenzies && <Confetti />}
     <main className='main'>
-      <h4 className='bestTime'>Best: {bestTime != null ? (<>{bestTime} <small>secs</small></>) : "N/A"}</h4>
+      <p className='bestTime'><h3>Best:</h3> {bestTime != null ? (<>{bestTime} <small>secs</small></>) : "N/A"}</p>
       <h1 className='title'>Tenzies</h1>
       <p className='subtitle'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <h4 className='count'>Rolls: {count}</h4>
