@@ -27,15 +27,9 @@ function App() {
 
   React.useEffect(() => {
     
-    let held = diceNumbers.every(die => die.isHeld)
-    let isWon = false;
 
-    if (held) {
-      const first = diceNumbers[0].value
-      isWon = diceNumbers.every(die => die.value == first)
-    }
 
-    if (isWon) {
+    if (hasWon()) {
         setTenzies(true)
         setTime(prevTime => {
           let newTime = Date.now() - prevTime;
@@ -47,6 +41,15 @@ function App() {
         })
     }
   }, [diceNumbers])
+
+  //  check winning conditions
+  function hasWon() {
+    let held = diceNumbers.every(die => die.isHeld)
+    let isWon = false;
+    const first = diceNumbers[0].value
+    isWon = diceNumbers.every(die => die.value == first)
+    return (held && isWon)
+  }
 
   // truncate time
   function truncTime(num) {
@@ -88,10 +91,11 @@ function App() {
 
   function hold(id) {
     let newArray = [];
-
-    setDiceNumbers(prev => prev.map(oldDie => {
-      return oldDie.id === id ? {...oldDie, isHeld: !oldDie.isHeld} : oldDie; 
-    }))
+    if (!hasWon()) {
+      setDiceNumbers(prev => prev.map(oldDie => {
+        return oldDie.id === id ? {...oldDie, isHeld: !oldDie.isHeld} : oldDie;
+      }))
+    }
 
   }
 
@@ -105,7 +109,7 @@ function App() {
     <>
     {tenzies && <Confetti />}
     <main className='main'>
-      <p className='bestTime'><h3>Best:</h3> {bestTime != null ? (<>{bestTime} <small>secs</small></>) : "N/A"}</p>
+      <div className='bestTime'><h3>Best:</h3> {bestTime != null ? (<>{bestTime} <small>secs</small></>) : "N/A"}</div>
       <h1 className='title'>Tenzies</h1>
       <p className='subtitle'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <h4 className='count'>Rolls: {count}</h4>
